@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>0thTachi</title>
 <meta name="description" content="AI models get most of the attention. But the model is only one part of an agent.">
 <link rel="icon" type="image/png" href="assets/fav-zeroblade-b1.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
+  html, body { min-height: 100%; }
   body {
+    min-height: 100dvh;
     background: #07080a;
     color: #e2e8f0;
     font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: max(1.5rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) max(3.5rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
     -webkit-font-smoothing: antialiased;
   }
-  main { text-align: center; padding: 2rem; }
+  main {
+    width: min(100%, 760px);
+    text-align: center;
+    padding: 2rem 1rem;
+  }
   .mark {
     width: 132px; height: 132px;
     image-rendering: pixelated;
@@ -33,14 +39,15 @@
     color: #e2e8f0;
   }
   .riddle {
-    font-size: .92rem;
-    letter-spacing: .1em;
+    font-size: clamp(.78rem, 2vw, .92rem);
+    line-height: 1.7;
+    letter-spacing: .08em;
     color: #94a3b8;
   }
   .cmd {
-    margin-top: 2.6rem;
+    margin-top: 2.35rem;
     display: inline-block;
-    font-size: .92rem;
+    font-size: clamp(.86rem, 2vw, .96rem);
     color: #3b82f6;
     cursor: pointer;
     letter-spacing: .06em;
@@ -56,31 +63,44 @@
   .hint {
     margin-top: .8rem;
     font-size: .68rem;
+    line-height: 1.5;
     letter-spacing: .1em;
-    color: #1e293b;
+    color: #334155;
     transition: color .3s;
   }
   .pg-placeholder {
-    margin-top: 1.35rem;
-    font-size: .68rem;
-    letter-spacing: .1em;
-    color: #334155;
+    margin-top: 1.55rem;
+    font-size: clamp(1rem, 3vw, 1.18rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .08em;
+    color: #60a5fa;
+    text-shadow: 0 0 18px rgba(59, 130, 246, .16);
   }
   .github-link {
     position: fixed;
-    right: 1.25rem;
-    bottom: 1rem;
-    color: #334155;
+    right: max(1.25rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    color: #64748b;
     text-decoration: none;
-    font-size: .68rem;
+    font-size: .72rem;
     letter-spacing: .08em;
+    padding: .4rem .15rem;
     transition: color .25s;
   }
-  .github-link:hover { color: #3b82f6; }
+  .github-link:hover, .github-link:focus-visible { color: #60a5fa; }
   @media (max-width: 480px) {
+    body { align-items: center; }
+    main { padding: 1.25rem .25rem; }
     .mark { width: 104px; height: 104px; }
     h1 { font-size: .9rem; letter-spacing: .45em; text-indent: .45em; }
-    .github-link { right: .9rem; bottom: .8rem; }
+    .riddle { letter-spacing: .055em; }
+    .cmd { margin-top: 2rem; }
+    .pg-placeholder { margin-top: 1.4rem; font-size: 1.08rem; }
+    .github-link {
+      right: max(.9rem, env(safe-area-inset-right));
+      bottom: max(.7rem, env(safe-area-inset-bottom));
+    }
   }
 </style>
 </head>
