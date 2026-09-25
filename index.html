@@ -60,9 +60,21 @@
     color: #1e293b;
     transition: color .3s;
   }
+  .github-link {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1rem;
+    color: #334155;
+    text-decoration: none;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    transition: color .25s;
+  }
+  .github-link:hover { color: #3b82f6; }
   @media (max-width: 480px) {
     .mark { width: 104px; height: 104px; }
     h1 { font-size: .9rem; letter-spacing: .45em; text-indent: .45em; }
+    .github-link { right: .9rem; bottom: .8rem; }
   }
 </style>
 </head>
@@ -72,6 +84,7 @@
   <div class="cmd" id="cmd" title="copy"><span class="ps1">$&nbsp;</span>npx unsheathe<span class="cursor"></span></div>
   <p class="hint" id="hint">share the command. never the door.</p>
 </main>
+<a class="github-link" href="https://github.com/0xPlaygrounds" target="_blank" rel="noopener noreferrer">github</a>
 <script>
   var cmd = document.getElementById('cmd'), hint = document.getElementById('hint');
   cmd.addEventListener('click', function () {
