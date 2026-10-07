@@ -11,7 +11,7 @@
   html, body {
     min-height: 100dvh;
     margin: 0;
-    background: #020303 url("assets/site-bg.svg") center center / cover no-repeat fixed;
+    background: #010302;
     color: #e5e7eb;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     display: flex;
@@ -22,14 +22,37 @@
     -webkit-font-smoothing: antialiased;
   }
   body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
     background:
-      linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.14)),
-      repeating-linear-gradient(to bottom, rgba(255,255,255,.018) 0 1px, transparent 1px 4px);
-    z-index: 0;
+      radial-gradient(circle at 13% 7%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 35% 8%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 66% 15%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 88% 14%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 4% 52%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 21% 78%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 42% 83%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 63% 91%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 83% 76%, #37ff76 0 1px, transparent 2px),
+      radial-gradient(circle at 96% 64%, #37ff76 0 1px, transparent 2px);
+    opacity:.75;
+  }
+  body::after {
+    content:"✦    +         ✦              +          ✦        +";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    color:#48ff82;
+    font-size:18px;
+    letter-spacing:7vw;
+    line-height:42vh;
+    opacity:.62;
+    text-shadow:0 0 9px #38ff75;
+    overflow:hidden;
   }
   main {
     width: min(100%, 1548px);
@@ -63,9 +86,9 @@
   .project { position: relative; z-index: 1; color: inherit; text-decoration: none; display: block; }
   .project-visual {
     height: 326px;
-    border: 1px solid rgba(148,163,184,.27);
+    border: 1px solid rgba(148,163,184,.34);
     border-radius: 8px;
-    background: rgba(0,0,0,.18);
+    background: rgba(0,0,0,.30);
     display: flex;
     align-items: center;
     justify-content: center;
