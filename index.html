@@ -10,15 +10,14 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     min-height: 100dvh;
-    background:
-      radial-gradient(ellipse at 50% 44%, rgba(19,28,23,.78) 0%, rgba(5,7,6,.9) 38%, #020303 76%),
-      #020303;
-    color: #e2e8f0;
+    margin: 0;
+    background: #020303;
+    color: #e5e7eb;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 34px 6vw 52px;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
@@ -27,14 +26,16 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: .22;
-    background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 4px);
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,.12), rgba(0,0,0,.30)),
+      repeating-linear-gradient(to bottom, rgba(255,255,255,.018) 0 1px, transparent 1px 4px);
+    z-index: 0;
   }
   main {
     width: min(100%, 1240px);
-    text-align: center;
-    padding: 2rem 0;
+    padding: 0;
     position: relative;
+    z-index: 1;
   }
   .mark {
     width: 132px; height: 132px;
@@ -50,63 +51,39 @@
     color: #e2e8f0;
   }
   .riddle { display: none; }
-  .projects { position: relative; margin-top: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: left; }
-  .projects::before {
-    content: "";
-    position: absolute;
-    width: 760px;
-    height: 610px;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
-    border-radius: 46% 46% 42% 42%;
-    background:
-      radial-gradient(circle at 42% 29%, rgba(130,140,136,.14) 0 3%, transparent 4%),
-      radial-gradient(circle at 58% 29%, rgba(130,140,136,.14) 0 3%, transparent 4%),
-      radial-gradient(ellipse at 50% 46%, rgba(110,120,116,.12), rgba(10,12,11,.2) 45%, transparent 70%);
-    filter: contrast(1.4);
-    pointer-events: none;
-    z-index: 0;
+  .projects {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 36px;
+    text-align: left;
+    isolation: isolate;
   }
   .projects::after {
     content: "";
     position: absolute;
-    width: 680px;
-    height: 330px;
+    z-index: -1;
+    width: 760px;
+    height: 340px;
     left: 50%;
-    top: 33%;
-    transform: translate(-50%, -50%);
-    border-bottom: 14px solid rgba(126,231,135,.18);
+    top: 22%;
+    transform: translateX(-50%);
+    border-bottom: 12px solid rgba(126,231,135,.22);
     border-radius: 0 0 55% 55%;
-    filter: blur(.5px);
-    pointer-events: none;
-    z-index: 0;
+    filter: drop-shadow(0 0 10px rgba(126,231,135,.04));
   }
   .project { position: relative; z-index: 1; color: inherit; text-decoration: none; display: block; }
-  .project-visual { height: 260px; border: 1px solid rgba(148,163,184,.26); border-radius: 8px; background: rgba(0,0,0,.46); display: flex; align-items: center; justify-content: center; transition: border-color .2s, transform .2s; overflow: hidden; backdrop-filter: blur(1px); }
-  .project:hover .project-visual { border-color: #475569; transform: translateY(-2px); }
-  .project-logo { font-size: 2.15rem; font-weight: 700; letter-spacing: .12em; color: #f8fafc; }
-  .arc-logo { width: 118px; height: 58px; border-bottom: 4px solid #7ee787; border-radius: 0 0 70px 70px; position: relative; }
-  .arc-logo:before, .arc-logo:after { content: ""; position: absolute; top: 47px; width: 9px; height: 4px; background: #7ee787; border-radius: 5px; }
-  .arc-logo:before { left: -2px; transform: rotate(25deg); } .arc-logo:after { right: -2px; transform: rotate(-25deg); }
-  .ryzome-logo { font-size: 4.6rem; line-height: 1; color: #9bea55; transform: rotate(45deg); }
-  .project-title { margin-top: 1.25rem; font-size: 1.12rem; font-weight: 500; color: #e5e7eb; }
-  .badge { margin-left: .45rem; padding: .16rem .4rem; border: 1px solid #334155; border-radius: 999px; font-size: .58rem; color: #94a3b8; vertical-align: middle; }
-  .project-desc { margin-top: 1rem; font-size: 1rem; line-height: 1.55; color: #92979e; }
-  .github-link { display: none; }
-  .github-link:hover, .github-link:focus-visible { color: #60a5fa; }
-  @media (max-width: 480px) {
-    body { align-items: center; }
-    main { padding: 1.25rem .25rem; }
-    .mark { width: 104px; height: 104px; }
-    h1 { font-size: .9rem; letter-spacing: .45em; text-indent: .45em; }
-    .riddle { letter-spacing: .055em; }
-    .projects { grid-template-columns: 1fr; gap: 2.25rem; margin-top: 2.5rem; }
-    .project-visual { height: 220px; }
-    .github-link {
-      right: max(.9rem, env(safe-area-inset-right));
-      bottom: max(.7rem, env(safe-area-inset-bottom));
-    }
+  .project-visual {
+    height: 262px;
+    border: 1px solid rgba(148,163,184,.27);
+    border-radius: 8px;
+    background: rgba(0,0,0,.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: blur(.4px);
+    transition: border-color .2s, transform .2s;
   }
 </style>
 </head>
